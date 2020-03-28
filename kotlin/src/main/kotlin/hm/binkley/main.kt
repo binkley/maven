@@ -1,8 +1,12 @@
 package hm.binkley
 
-import lombok.Generated
+import hm.binkley.exemplar.HelloWorld
 
-@Generated // Lie to JaCoCo
-fun main() {
-    println("Hello, World!")
+/**
+ * Runs a demo of the library.
+ *
+ * @param args command line arguments, ignored
+ */
+fun main(vararg args: String) {
+    println(HelloWorld().greet())
 }
