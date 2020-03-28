@@ -12,7 +12,7 @@ class HelloWorld {
     }
 
     companion object {
-        /** The global greeting.  */
+        /** The global greeting. */
         const val GREETING = "Hello, world!"
     }
 }

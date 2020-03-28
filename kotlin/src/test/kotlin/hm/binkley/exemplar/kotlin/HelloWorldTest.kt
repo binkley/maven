@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test
 internal class HelloWorldTest {
     @Test
     fun shouldGreet() {
-        assertEquals(
-            GREETING, HelloWorld()
-                .greet()
-        )
+        assertEquals(GREETING, HelloWorld().greet())
     }
 }
