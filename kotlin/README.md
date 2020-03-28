@@ -12,6 +12,12 @@ Kotlin Maven exemplar
 
 ## Build
 
+Try:
+
+```
+$ ./build.sh
+```
+
 There is tension between a "clean build" (quiet, no output except on errors),
 and seeing progress.  This Maven configuration leans to "quiet builds".  To
 see progress, use:
