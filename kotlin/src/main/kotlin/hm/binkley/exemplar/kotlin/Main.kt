@@ -1,6 +1,4 @@
-package hm.binkley
-
-import hm.binkley.exemplar.HelloWorld
+package hm.binkley.exemplar.kotlin
 
 /** Runs a demo of the library. */
 fun main() {

@@ -1,7 +1,6 @@
-package hm.binkley.exemplar
+package hm.binkley.exemplar.kotlin
 
-import hm.binkley.exemplar.HelloWorld.Companion.GREETING
-import hm.binkley.main
+import hm.binkley.exemplar.kotlin.HelloWorld.Companion.GREETING
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream

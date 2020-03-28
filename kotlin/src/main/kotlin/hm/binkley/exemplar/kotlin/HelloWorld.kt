@@ -1,4 +1,4 @@
-package hm.binkley.exemplar
+package hm.binkley.exemplar.kotlin
 
 /** A simple example greeting to the world.  */
 class HelloWorld {
