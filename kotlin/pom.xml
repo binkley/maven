@@ -35,7 +35,7 @@
         <dependency-check-maven.version>5.3.2</dependency-check-maven.version>
         <detekt.version>1.8.0</detekt.version>
         <dokka.version>0.10.1</dokka.version>
-        <findsecbugs-plugin.version>1.10.0</findsecbugs-plugin.version>
+        <findsecbugs-plugin.version>1.10.1</findsecbugs-plugin.version>
         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
         <jacoco-minimum-line-coverage>100%</jacoco-minimum-line-coverage>
         <java.charset>UTF-8</java.charset>
@@ -335,30 +335,30 @@
             </plugin>
             <!-- TODO: Disable until JDK10+ compatibility
                   See https://github.com/Kotlin/dokka/issues/294 -->
-<!--            <plugin>-->
-<!--                <groupId>org.jetbrains.dokka</groupId>-->
-<!--                <artifactId>dokka-maven-plugin</artifactId>-->
-<!--                <version>${dokka.version}</version>-->
-<!--                <configuration>-->
-<!--                    <outputFormat>javadoc</outputFormat>-->
-<!--                    <reportUndocumented>true</reportUndocumented>-->
-<!--                    <sourceLinks>-->
-<!--                        <link>-->
-<!--                            <path>${project.basedir}</path>-->
-<!--                            <url>https://github.com/binkley/maven/blob/master</url>-->
-<!--                            <lineSuffix>#L</lineSuffix>-->
-<!--                        </link>-->
-<!--                    </sourceLinks>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>pre-site</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>dokka</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.jetbrains.dokka</groupId>-->
+            <!--                <artifactId>dokka-maven-plugin</artifactId>-->
+            <!--                <version>${dokka.version}</version>-->
+            <!--                <configuration>-->
+            <!--                    <outputFormat>javadoc</outputFormat>-->
+            <!--                    <reportUndocumented>true</reportUndocumented>-->
+            <!--                    <sourceLinks>-->
+            <!--                        <link>-->
+            <!--                            <path>${project.basedir}</path>-->
+            <!--                            <url>https://github.com/binkley/maven/blob/master</url>-->
+            <!--                            <lineSuffix>#L</lineSuffix>-->
+            <!--                        </link>-->
+            <!--                    </sourceLinks>-->
+            <!--                </configuration>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <phase>pre-site</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>dokka</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven-source-plugin.version}</version>

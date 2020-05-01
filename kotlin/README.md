@@ -8,7 +8,17 @@
 
 Kotlin Maven exemplar
 
+* [Features](#features)
 * [Build](#build)
+
+## Features
+
+* [Bug detection, part 1](https://github.com/detekt/detekt)
+* [Bug detection, part 1](https://github.com/spotbugs/spotbugs-maven-plugin)
+* [Code style](https://github.com/gantsign/ktlint-maven-plugin)
+* [Code coverage](https://www.eclemma.org/jacoco/trunk/doc/maven.html)
+* [Security checks, part 1](https://github.com/jeremylong/DependencyCheck)
+* [Security checks, part 2](https://github.com/find-sec-bugs/find-sec-bugs)
 
 ## Build
 
