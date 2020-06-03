@@ -33,7 +33,7 @@
     <properties>
         <!-- @formatter:off -->
         <dependency-check-maven.version>5.3.2</dependency-check-maven.version>
-        <detekt.version>1.9.1</detekt.version>
+        <detekt-maven-plugin.version>1.9.1</detekt-maven-plugin.version>
         <dokka.version>0.10.1</dokka.version>
         <findsecbugs-plugin.version>1.10.1</findsecbugs-plugin.version>
         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
@@ -45,7 +45,6 @@
         <ktlint-maven-plugin.version>1.4.2</ktlint-maven-plugin.version>
         <lombok.version>1.18.12</lombok.version>
         <main.class>hm.binkley.exemplar.kotlin.MainKt</main.class>
-        <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -275,42 +274,25 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>${maven-antrun-plugin.version}</version>
+                <groupId>com.github.ozsie</groupId>
+                <artifactId>detekt-maven-plugin</artifactId>
+                <version>${detekt-maven-plugin.version}</version>
+                <configuration>
+                    <config>config/detekt.yml</config>
+                    <report>
+                        <report>
+                            html:${basedir}/target/site/detekt/index.html
+                        </report>
+                    </report>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>detekt</id>
                         <phase>verify</phase>
-                        <configuration>
-                            <target name="detekt">
-                                <java taskname="detekt" dir="${basedir}"
-                                      fork="true"
-                                      failonerror="true"
-                                      classname="io.gitlab.arturbosch.detekt.cli.Main"
-                                      classpathref="maven.plugin.classpath">
-                                    <arg value="--config"/>
-                                    <arg value="config/detekt.yml"/>
-                                    <arg value="--input"/>
-                                    <arg value="${basedir}/src/main/kotlin"/>
-                                    <arg value="--excludes"/>
-                                    <arg value="**/*Test.kt"/>
-                                    <arg value="--report"/>
-                                    <arg value="html:${basedir}/target/site/detekt/index.html"/>
-                                </java>
-                            </target>
-                        </configuration>
                         <goals>
-                            <goal>run</goal>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>io.gitlab.arturbosch.detekt</groupId>
-                        <artifactId>detekt-cli</artifactId>
-                        <version>${detekt.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.owasp</groupId>
