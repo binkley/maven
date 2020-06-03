@@ -2,11 +2,9 @@
 <img src="https://unlicense.org/pd-icon.png" alt="Public Domain" align="right"/>
 </a>
 
-# Kotlin
+# Maven Kotlin Exemplar
 
 [![Public Domain](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
-
-Kotlin Maven exemplar
 
 * [Features](#features)
 * [Build](#build)
@@ -42,7 +40,7 @@ $ ln -s ~/.m2 .maven-cache
 ```
 
 This will share local Maven plugin and dependency downloads with the Docker
-container run by Batect.
+container run by Batect, and avoids redownloading plugins and dependencies.
 
 _NB_: the `-C` flag enforces
 [strict checksums](https://snyk.io/blog/10-maven-security-best-practices/).
