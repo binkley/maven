@@ -1,12 +1,12 @@
 @echo off
-rem This file is part of batect.
-rem Do not modify this file, it will be overwritten next time you upgrade batect.
+rem This file is part of Batect.
+rem Do not modify this file. It will be overwritten next time you upgrade Batect.
 rem You should commit this file to version control alongside the rest of your project. It should not be installed globally.
 rem For more information, visit https://github.com/batect/batect.
 
 setlocal EnableDelayedExpansion
 
-set "version=0.53.1"
+set "version=0.64.1"
 
 if "%BATECT_CACHE_DIR%" == "" (
     set "BATECT_CACHE_DIR=%USERPROFILE%\.batect\cache"
@@ -22,7 +22,7 @@ $ErrorActionPreference = 'Stop'^
 
 ^
 
-$Version='0.53.1'^
+$Version='0.64.1'^
 
 ^
 
@@ -48,6 +48,8 @@ $UrlEncodedVersion = [Uri]::EscapeDataString($Version)^
 
 $DownloadUrl = getValueOrDefault $env:BATECT_DOWNLOAD_URL "$DownloadUrlRoot/$UrlEncodedVersion/bin/batect-$UrlEncodedVersion.jar"^
 
+$ExpectedChecksum = getValueOrDefault $env:BATECT_DOWNLOAD_CHECKSUM '132172733acb2923a7cc4f373eee2f4eb4a06454e09cc8dceee569355b960b7a'^
+
 ^
 
 $RootCacheDir = getValueOrDefault $env:BATECT_CACHE_DIR "$env:USERPROFILE\.batect\cache"^
@@ -55,6 +57,8 @@ $RootCacheDir = getValueOrDefault $env:BATECT_CACHE_DIR "$env:USERPROFILE\.batec
 $VersionCacheDir = "$RootCacheDir\$Version"^
 
 $JarPath = "$VersionCacheDir\batect-$Version.jar"^
+
+$DidDownload = 'false'^
 
 ^
 
@@ -64,9 +68,13 @@ function main() {^
 
         download^
 
+        $DidDownload = 'true'^
+
     }^
 
 ^
+
+    checkChecksum^
 
     runApplication @args^
 
@@ -84,7 +92,7 @@ function haveVersionCachedLocally() {^
 
 function download() {^
 
-    Write-Output "Downloading batect version $Version from $DownloadUrl..."^
+    Write-Output "Downloading Batect version $Version from $DownloadUrl..."^
 
 ^
 
@@ -130,6 +138,24 @@ function download() {^
 
 ^
 
+function checkChecksum() {^
+
+    $localChecksum = (Get-FileHash -Algorithm 'SHA256' $JarPath).Hash.ToLower()^
+
+^
+
+    if ($localChecksum -ne $expectedChecksum) {^
+
+        Write-Host -ForegroundColor Red "The downloaded version of Batect does not have the expected checksum. Delete '$JarPath' and then re-run this script to download it again."^
+
+        exit 1^
+
+    }^
+
+}^
+
+^
+
 function createCacheDir() {^
 
     if (-not (Test-Path $VersionCacheDir)) {^
@@ -167,6 +193,8 @@ function runApplication() {^
     $env:HOSTNAME = $env:COMPUTERNAME^
 
     $env:BATECT_WRAPPER_CACHE_DIR = $RootCacheDir^
+
+    $env:BATECT_WRAPPER_DID_DOWNLOAD = $DidDownload^
 
 ^
 
@@ -248,7 +276,7 @@ function checkJavaVersion([System.Management.Automation.CommandInfo]$java) {^
 
     if (-not ($versionInfo -match "64\-[bB]it")) {^
 
-        Write-Host -ForegroundColor Red "The version of Java that is available on your PATH is a 32-bit version, but batect requires a 64-bit Java runtime."^
+        Write-Host -ForegroundColor Red "The version of Java that is available on your PATH is a 32-bit version, but Batect requires a 64-bit Java runtime."^
 
         Write-Host -ForegroundColor Red "If you have a 64-bit version of Java installed, please make sure your PATH is set correctly."^
 
@@ -374,8 +402,12 @@ rem If we modify the script while it is still running (eg. because we're updatin
 rem because it continues execution from the next byte (which was previously the end of the line).
 rem By explicitly exiting on the same line as starting the application, we avoid these issues as cmd.exe has already read the entire
 rem line before we start the application and therefore will always exit.
+
+rem Why do we set PSModulePath?
+rem See issue #627
+set "PSModulePath="
 powershell.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -File "%ps1Path%" %* && exit /b 0 || exit /b !ERRORLEVEL!
 
 rem What's this for?
 rem This is so the tests for the wrapper has a way to ensure that the line above terminates the script correctly.
-echo WARNING: you should never see this, and if you do, then batect's wrapper script has a bug
+echo WARNING: you should never see this, and if you do, then Batect's wrapper script has a bug
