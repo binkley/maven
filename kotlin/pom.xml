@@ -32,18 +32,18 @@
 
     <properties>
         <!-- @formatter:off -->
-        <dependency-check-maven.version>5.3.2</dependency-check-maven.version>
+        <dependency-check-maven.version>6.1.0</dependency-check-maven.version>
         <detekt-maven-plugin.version>1.11.0</detekt-maven-plugin.version>
         <dokka.version>0.10.1</dokka.version>
         <findsecbugs-plugin.version>1.10.1</findsecbugs-plugin.version>
-        <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
         <java.charset>UTF-8</java.charset>
         <jdk.version>11</jdk.version>
-        <junit.version>5.6.2</junit.version>
+        <junit.version>5.7.1</junit.version>
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
         <kotlin.version>1.4.30</kotlin.version>
-        <ktlint-maven-plugin.version>1.5.2</ktlint-maven-plugin.version>
-        <lombok.version>1.18.12</lombok.version>
+        <ktlint-maven-plugin.version>1.7.0</ktlint-maven-plugin.version>
+        <lombok.version>1.18.18</lombok.version>
         <main.class>hm.binkley.exemplar.kotlin.MainKt</main.class>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
@@ -54,7 +54,7 @@
         <maven-failsafe-plugin.version>${maven-testing-plugins.version}</maven-failsafe-plugin.version>
         <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
-        <maven-project-info-reports-plugin.version>3.1.0</maven-project-info-reports-plugin.version>
+        <maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
         <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
         <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
@@ -66,7 +66,7 @@
         <owasp.skip>false</owasp.skip>
         <project.build.sourceEncoding>${java.charset}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${java.charset}</project.reporting.outputEncoding>
-        <spotbugs-maven-plugin.version>4.0.4</spotbugs-maven-plugin.version>
+        <spotbugs-maven-plugin.version>4.2.0</spotbugs-maven-plugin.version>
         <!-- @formatter:on -->
     </properties>
 
