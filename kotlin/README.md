@@ -4,7 +4,7 @@
 
 # Maven Kotlin Exemplar
 
-[![Public Domain](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+[![license](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 
 * [Features](#features)
 * [Build](#build)
